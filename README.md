@@ -2,11 +2,6 @@
 
 > Projeto de um Dashboard com elementos gráficos apresentando os números da Covid-19.
 
----
-
-Projeto idealizado pela instituição IGTI no curso de pós-gradução. O intuito deste projeto é de aprimorar os conhecimentos com a linguagem JavaScript, realizando consumo de dados de uma API utilizando requisições assícronas. Utilizando bibliotecas para conclusão do projeto;
-
----
 
 ### Requerimentos
 
