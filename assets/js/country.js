@@ -144,7 +144,7 @@ function getChartLinhas(option, data, averageArray, totalArray) {
               : option == "Confirmed"
               ? "Total de Confirmados"
               : "Total de Recuperados",
-          borderColor: "#3B0B39",
+          borderColor: "#8A0808",
           backgroundColor: "rgb(255,140,13,0.1)",
         },
         {
@@ -155,7 +155,7 @@ function getChartLinhas(option, data, averageArray, totalArray) {
               : option == "Confirmed"
               ? "Média de Confirmados"
               : "Média de Recuperados",
-          borderColor: "#8A0808",
+          borderColor: "#fff",
           backgroundColor: "rgb(60,186,159,0.1)",
         },
       ],
@@ -169,7 +169,8 @@ function getChartLinhas(option, data, averageArray, totalArray) {
         },
         title: {
           display: true,
-          text: "Curva diaria de Covid-19",
+          text: "Curva diaria de Covid-19 (Toque nas linhas para ver os valores)",
+          color: "white",
         },
         layout: {
           padding: {

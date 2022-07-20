@@ -34,12 +34,11 @@
   </head>
 
   <body>
-    <!--menu-->
-    <!--nota: com as classe col podemos padronizar tamanhos para diversos layouts
-    
-    -->
+    <!--nota: com as classe col podemos padronizar tamanhos para diversos layouts-->
+    <!--div geral-->
     <div class="container col-lg-12 col-md-12 col-sm-12">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!--menu-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container">
           <button
             class="navbar-toggler"
@@ -49,29 +48,30 @@
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            style="background-color: #ffffff"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="../index.html"
-                  >Home<span class="sr-only">(current)</span></a
-                >
+                <a style="color: #fff" class="nav-link" href="../index.html"
+                  >Home<span class="sr-only"></span
+                ></a>
               </li>
               <li>
-                <a class="nav-link" href="../country.html"
-                  >País<span class="sr-only">(current)</span></a
-                >
+                <a style="color: #fff" class="nav-link" href="../country.html"
+                  >País<span class="sr-only"></span
+                ></a>
               </li>
               <li>
-                <a class="nav-link" href="../top5.html"
-                  >Top 3<span class="sr-only">(current)</span></a
-                >
+                <a style="color: #fff" class="nav-link" href="../top5.html"
+                  >Top 3<span class="sr-only"></span
+                ></a>
               </li>
             </ul>
           </div>
-          <a class="navbar-brand" href="#">Covid-19</a>
+          <a style="color: #fff" class="navbar-brand" href="#">Covid-19</a>
         </div>
       </nav>
 
@@ -104,7 +104,11 @@
             </section>
           </div>
           <!--div com a data de Ultima atualização] -->
-          <div class="chart-notes col-lg-12 col-md-12 col-sm-12" id="date">
+          <div
+            style="background-color: #fff"
+            class="chart-notes col-lg-12 col-md-12 col-sm-12"
+            id="date"
+          >
             Data de atualização:
           </div>
           <!--div com dados do Desenvolvedor] -->
@@ -114,9 +118,9 @@
               href="https://cv-reinan-santos.netlify.app"
               target="_blank"
             >
-              <h5>Frontend Desenvolvido por:</h5>
-              <h5>
-                Reinan santos<br />
+              <h5 style="color: #fff">
+                <strong>Frontend Desenvolvido por:</strong><br />Reinan
+                santos<br />
                 Clique para acessar meu curriculo
               </h5>
             </a>
@@ -136,6 +140,13 @@
           <div class="chart-wrapper col-lg-12 col-md-12 col-sm-12">
             <!--Div mais interna do gráfico barra dos paises em sequncia de total de morte-->
             <div class="chart-stage col-lg-12 col-md-12 col-sm-12">
+              <div class="aviso-celular">
+                <p>
+                  PARA VER ESTE GRÁFICO COLOQUE SEU APARELHO NA POSIÇÃO
+                  HORIZINTAL
+                </p>
+              </div>
+
               <canvas id="barras" width="300" height="100"></canvas>
             </div>
           </div>

@@ -2,11 +2,14 @@
 
 > Projeto de um Dashboard com elementos gráficos apresentando os números da Covid-19.
 
+<<<<<<< HEAD
 ---
 
  O intuito deste projeto é de aprimorar os conhecimentos com a linguagem JavaScript, realizando consumo de dados de uma API utilizando requisições assícronas. Utilizando bibliotecas para conclusão do projeto;
 
 ---
+=======
+>>>>>>> 856e08ec73c52270e471f4b7ac21e2fbae3f14f7
 
 ### Requerimentos
 

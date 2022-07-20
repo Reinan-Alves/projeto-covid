@@ -52,15 +52,11 @@ function getChartPizza(data) {
   new Chart(document.getElementById("pizza"), {
     type: "pie",
     data: {
-      labels: ["Confirmados", "Recuperados", "Mortes"],
+      labels: ["Confirmados", "Mortes"],
       datasets: [
         {
-          data: [
-            data.Global.NewConfirmed,
-            data.Global.NewRecovered,
-            data.Global.NewDeaths,
-          ],
-          backgroundColor: ["#610B0B", "green", "red"],
+          data: [data.Global.NewConfirmed, data.Global.NewDeaths],
+          backgroundColor: ["#fff", "red"],
         },
       ],
     },
@@ -93,7 +89,7 @@ function getChartBarra(data) {
         {
           label: "Países",
           data: totalDeaths,
-          backgroundColor: "#610B0B",
+          backgroundColor: "#fff",
         },
       ],
     },
