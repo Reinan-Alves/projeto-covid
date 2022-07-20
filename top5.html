@@ -6,74 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Números da Covid</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-
+    <!--Import do css.mim do bootstrap-->
+    <link
+      href="bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--link do css local -->
     <link
       rel="stylesheet"
       type="text/css"
       href="../../assets/css/keen-dashboards.css"
     />
+    <!--Import do JS.mim do bootstrap e jquery.mim-->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="bootstrap/js/jquery-3.6.0.min.js"
+    ></script>
+    <!--Bibliotecas de graficos e requisição-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   </head>
 
   <body class="keen-dashboard">
-    <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-collapse">
-          <ul class="navbar-nav nav main-nav">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../country.html">País</a></li>
-            <li><a href="../top5.html">Top 3</a></li>
-          </ul>
+    <!--div geral-->
+    <div class="container col-lg-12 col-md-12 col-sm-12">
+      <!--menu-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style="background-color: #ffffff"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a style="color: #fff" class="nav-link" href="../index.html"
+                  >Home<span class="sr-only"></span
+                ></a>
+              </li>
+              <li>
+                <a style="color: #fff" class="nav-link" href="../country.html"
+                  >País<span class="sr-only"></span
+                ></a>
+              </li>
+              <li>
+                <a style="color: #fff" class="nav-link" href="../top5.html"
+                  >Top 3<span class="sr-only"></span
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <a style="color: #fff" class="navbar-brand" href="#">Covid-19</a>
         </div>
-      </div>
-    </div>
+      </nav>
 
-    <h2 id="titulo-index">
-      <strong>Top 3 dos paises por números de mortes pelo Covid-19</strong>
-    </h2>
+      <!--titulo-->
+      <div>
+        <h2 id="titulo-index">
+          <strong>TOP 3 de países com maior número de mortes</strong>
+        </h2>
+      </div>
+      <!--div geral do gráfico-->
+      <div class="container col-lg-12 col-md-12 col-sm-12">
+        <!--div com display none, utilizada apenas para obter dados para o grafico-->
+        <div class="chart-wrapper desaparecer">
+          <div class="containerkpi wrapkpi">
+            <section class="itemkpi">
+              <h5>Total Confirmados</h5>
+              <p id="confirmed"></p>
+            </section>
+            <section class="itemkpi death-color">
+              <h5>Total Mortes</h5>
+              <p id="death"></p>
+            </section>
+            <section class="itemkpi">
+              <h5>Total Recuperados</h5>
+              <p id="recovered"></p>
+            </section>
+          </div>
+          <div class="chart-notes" id="date">Data de atualização:</div>
+          <a
+            class="link"
+            href="https://cv-reinan-santos.netlify.app"
+            target="_blank"
+          >
+            <h5>Frontend Desenvolvido por:</h5>
+            <h5>
+              Reinan santos<br />
+              Clique para acessar meu curriculo
+            </h5>
+          </a>
 
-    <div class="container grid grid-two-and-one">
-      <div class="chart-wrapper desaparecer">
-        <div class="containerkpi wrapkpi">
-          <section class="itemkpi">
-            <h5>Total Confirmados</h5>
-            <p id="confirmed"></p>
-          </section>
-          <section class="itemkpi death-color">
-            <h5>Total Mortes</h5>
-            <p id="death"></p>
-          </section>
-          <section class="itemkpi">
-            <h5>Total Recuperados</h5>
-            <p id="recovered"></p>
-          </section>
+          <div class="chart-wrapper">
+            <div class="chart-stage">
+              <canvas id="pizza" width="100" height="50"></canvas>
+            </div>
+          </div>
         </div>
-        <div class="chart-notes" id="date">Data de atualização:</div>
-        <a
-          class="link"
-          href="https://cv-reinan-santos.netlify.app"
-          target="_blank"
-        >
-          <h5>Frontend Desenvolvido por:</h5>
-          <h5>
-            Reinan santos<br />
-            Clique para acessar meu curriculo
-          </h5>
-        </a>
-      </div>
-      <div class="chart-wrapper desaparecer">
-        <div class="chart-stage">
-          <canvas id="pizza" width="100" height="50"></canvas>
-        </div>
-      </div>
-      <div class="two">
-        <div class="chart-wrapper">
-          <div class="chart-stage">
-            <canvas id="barras" width="300" height="100"></canvas>
+        <!--Div com todo o rodapé-->
+        <div class="two">
+          <!--Div do grafico top3-->
+          <div class="chart-wrapper col-lg-12 col-md-12 col-sm-12">
+            <!--Div mais interna do grafico top3-->
+            <div class="chart-stage col-lg-12 col-md-12 col-sm-12">
+              <div class="aviso-celular">
+                <p>
+                  PARA VER ESTE GRÁFICO COLOQUE SEU APARELHO NA POSIÇÃO
+                  HORIZONTAL
+                </p>
+              </div>
+              <canvas id="barras" width="300" height="100"></canvas>
+            </div>
           </div>
         </div>
       </div>

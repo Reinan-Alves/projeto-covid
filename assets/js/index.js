@@ -52,11 +52,15 @@ function getChartPizza(data) {
   new Chart(document.getElementById("pizza"), {
     type: "pie",
     data: {
-      labels: ["Confirmados", "Mortes"],
+      labels: ["últimos Registros de Morte", "Novos casos confirmados"],
       datasets: [
         {
-          data: [data.Global.NewConfirmed, data.Global.NewDeaths],
-          backgroundColor: ["#fff", "red"],
+          data: [data.Global.NewDeaths, data.Global.NewConfirmed],
+          backgroundColor: ["red", "#fff"],
+        },
+        {
+          data: [data.Global.NewDeaths],
+          backgroundColor: ["red"],
         },
       ],
     },
@@ -101,7 +105,7 @@ function getChartBarra(data) {
         },
         title: {
           display: true,
-          text: "Total de Mortes por pais - Top 10",
+          text: "Total de Mortes por pais - Top 10 (Toque nas barras para ver os valores )",
           color: "white",
         },
       },

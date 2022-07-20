@@ -32,7 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   </head>
 
-  <body class="keen-dashboard">
+  <body>
     <!--div geral-->
     <div class="container col-lg-12 col-md-12 col-sm-12">
       <!--menu-->
@@ -74,108 +74,116 @@
       </nav>
 
       <!--titulo-->
-      <div class="container col-lg-12 col-md-12 col-sm-12">
-        <h2 id="titulo-index">
-          <strong>Formulário de pesquisa</strong>
-        </h2>
-      </div>
-      <!--div formulario de pesquisa e grafico-->
-      <div
-        class="container col-lg-12 col-md-12 col-sm-12 grid grid-hero-sidebar"
-      >
-        <!--div formulario-->
+      <div class="container col-lg-12 col-md-12 col-sm-12 keen-dashboard">
+        <div class="container col-lg-12 col-md-12 col-sm-12">
+          <h2 id="titulo-index">
+            <strong>Filtro de pesquisa</strong>
+          </h2>
+        </div>
+        <!--div formulario de pesquisa e grafico-->
         <div
-          class="container col-lg-12 col-md-12 col-sm-12 chart-wrapper sidebar"
+          class="container col-lg-12 col-md-12 col-sm-12 grid grid-hero-sidebar keen-dashboard"
         >
-          <div class="chart-title">
-            <h4 style="color: #fff">
-              Preencha todos os campos e clique em aplicar para gerar os
-              gráficos
-            </h4>
-          </div>
-          <!--campos-->
-          <div class="container col-lg-12 col-md-12 col-sm-12 chart-stage">
-            <h3>Data início</h3>
-            <input
-              style="font-size: 20px"
-              type="date"
-              name="date_start"
-              id="date_start"
-              min="2020-01-01"
-            />
-            <h3>Data fim</h3>
-            <input
-              style="font-size: 20px"
-              type="date"
-              name="date_end"
-              id="date_end"
-              min="2020-01-01"
-            />
-            <h3>Escolha o País</h3>
-            <select
-              style="font-size: 20px"
-              class="custom-select"
-              id="cmbCountry"
-            ></select>
-            <h3>Escolha o tipo de informação</h3>
-            <select style="font-size: 20px" class="custom-select" id="cmbData">
-              <option value="Confirmed">Casos Confirmados</option>
-              <option value="Deaths" selected>Número de Óbitos</option>
-              <!--o numero de casos recuperado está fechado pois está retornando valor "Zero" para todas as consultas-->
-              <option style="display: none" value="Recovered">
-                Recuperados
-              </option>
-            </select>
-            <div
-              class="btn-toolbar"
-              role="toolbar"
-              aria-label="Toolbar com grupos de botões"
-            >
-              <button type="button" class="btn btn-primary" id="filtro">
-                Aplicar
-              </button>
+          <!--div formulario-->
+          <div
+            class="container col-lg-12 col-md-12 col-sm-12 chart-wrapper sidebar"
+          >
+            <div class="chart-title">
+              <h4 style="color: #fff">
+                Preencha todos os campos e clique em aplicar para gerar os
+                gráficos
+              </h4>
             </div>
-          </div>
+            <!--campos-->
+            <div class="container col-lg-12 col-md-12 col-sm-12 chart-stage">
+              <h3>Data de início</h3>
+              <input
+                style="font-size: 20px"
+                type="date"
+                name="date_start"
+                id="date_start"
+                min="2020-01-01"
+              />
+              <h3>Data final</h3>
+              <input
+                style="font-size: 20px"
+                type="date"
+                name="date_end"
+                id="date_end"
+                min="2020-01-01"
+              />
+              <h3>Escolha o País</h3>
+              <select
+                style="font-size: 20px"
+                class="custom-select"
+                id="cmbCountry"
+              ></select>
+              <h3>Escolha o tipo de informação</h3>
+              <select
+                style="font-size: 20px"
+                class="custom-select"
+                id="cmbData"
+              >
+                <option value="Confirmed">Casos Confirmados</option>
+                <option value="Deaths" selected>Número de Óbitos</option>
+                <!--o numero de casos recuperado está fechado pois está retornando valor "Zero" para todas as consultas-->
+                <option style="display: none" value="Recovered">
+                  Recuperados
+                </option>
+              </select>
+              <div
+                class="btn-toolbar"
+                role="toolbar"
+                aria-label="Toolbar com grupos de botões"
+              >
+                <button type="button" class="btn btn-primary" id="filtro">
+                  Aplicar
+                </button>
+              </div>
+            </div>
 
-          <!--Div cards de retorno de formulario-->
-          <div class="container">
-            <div class="chart-wrapper">
-              <div class="chart-title">Total de confirmados</div>
-              <div class="chart-stage">
-                <section class="itemkpi">
-                  <h5 id="kpiconfirmed"></h5>
-                </section>
+            <!--Div cards de retorno de formulario-->
+            <div class="container">
+              <div class="chart-wrapper">
+                <div class="chart-title">Total de confirmados</div>
+                <div class="chart-stage">
+                  <section class="itemkpi">
+                    <h5 id="kpiconfirmed"></h5>
+                  </section>
+                </div>
               </div>
-            </div>
-            <div class="chart-wrapper">
-              <div class="chart-title">Total de mortes</div>
-              <div class="chart-stage">
-                <section class="itemkpi">
-                  <h5 id="kpideaths"></h5>
-                </section>
+              <div class="chart-wrapper">
+                <div class="chart-title">Total de mortes</div>
+                <div class="chart-stage">
+                  <section class="itemkpi">
+                    <h5 id="kpideaths"></h5>
+                  </section>
+                </div>
               </div>
-            </div>
-            <!--o numero de casos recuperado está fechado pois está retornando valor "Zero" para todas as consultas-->
-            <div style="display: none" class="chart-wrapper">
-              <div class="chart-title">Total de Recuperados</div>
-              <div class="chart-stage">
-                <section class="itemkpi">
-                  <h5 id="kpirecovered"></h5>
-                </section>
+              <!--o numero de casos recuperado está fechado pois está retornando valor "Zero" para todas as consultas-->
+              <div style="display: none" class="chart-wrapper">
+                <div class="chart-title">Total de Recuperados</div>
+                <div class="chart-stage">
+                  <section class="itemkpi">
+                    <h5 id="kpirecovered"></h5>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!--grafico com retorno da pesquisa-->
-      <div class="container col-lg-12 col-md-12 col-sm-12 hero">
-        <div class="chart-wrapper">
-          <div class="aviso-celular">
-            <p>AO GERAR GRÁFICO COLOQUE SEU APARELHO NA POSIÇÃO HORIZINTAL</p>
-          </div>
-          <div class="chart-stage">
-            <div>
-              <canvas id="linhas" width="300" height="100"></canvas>
+        <!--grafico com retorno da pesquisa-->
+        <div class="container col-lg-12 col-md-12 col-sm-12 hero">
+          <div class="chart-wrapper">
+            <div class="aviso-celular">
+              <p>
+                AO GERAR O GRÁFICO, COLOQUE SEU APARELHO NA POSIÇÃO HORIZONTAL
+              </p>
+            </div>
+            <div class="chart-stage">
+              <div>
+                <canvas id="linhas" width="300" height="100"></canvas>
+              </div>
             </div>
           </div>
         </div>

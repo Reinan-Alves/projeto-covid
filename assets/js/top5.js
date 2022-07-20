@@ -93,7 +93,7 @@ function getChartBarra(data) {
         {
           label: "Países",
           data: totalDeaths,
-          backgroundColor: "#610B0B",
+          backgroundColor: "#fff",
         },
       ],
     },
@@ -105,7 +105,7 @@ function getChartBarra(data) {
         },
         title: {
           display: true,
-          text: "Total de Mortes por país",
+          text: "Total de Mortes por país(Toque nas barras para ver os valores)",
           color: "white",
         },
       },
