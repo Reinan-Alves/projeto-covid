@@ -4,44 +4,92 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>Números da Covid</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-
+    <!--Import do css.mim do bootstrap-->
+    <link
+      href="bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--link do css local -->
     <link
       rel="stylesheet"
       type="text/css"
       href="../../assets/css/keen-dashboards.css"
     />
+    <!--Import do JS.mim do bootstrap e jquery.mim-->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="bootstrap/js/jquery-3.6.0.min.js"
+    ></script>
+    <!--Bibliotecas de graficos e requisição-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   </head>
 
-  <body class="keen-dashboard container">
-    <div class="main">
-      <div class="container">
-        <div class="menu">
-          <div class="navbar-collapse">
-            <ul class="navbar-nav nav main-nav">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../country.html">País</a></li>
-              <li><a href="../top5.html">Top 3</a></li>
+  <body>
+    <!--menu-->
+    <!--nota: com as classe col podemos padronizar tamanhos para diversos layouts
+    
+    -->
+    <div class="container col-lg-12 col-md-12 col-sm-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html"
+                  >Home<span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li>
+                <a class="nav-link" href="../country.html"
+                  >País<span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li>
+                <a class="nav-link" href="../top5.html"
+                  >Top 3<span class="sr-only">(current)</span></a
+                >
+              </li>
             </ul>
           </div>
+          <a class="navbar-brand" href="#">Covid-19</a>
         </div>
+      </nav>
+
+      <!--titulo-->
+      <div>
+        <h2 id="titulo-index">
+          <strong>Dados Globais Covid-19</strong>
+        </h2>
       </div>
 
-      <h2 id="titulo-index">
-        <strong>Dados Globais Covid-19</strong>
-      </h2>
-
-      <div class="container grid grid-two-and-one">
-        <div class="chart-wrapper">
-          <div class="containerkpi wrapkpi">
+      <!--div principal englobando Todos os gráficos da página-->
+      <div
+        class="container grid grid-two-and-one keen-dashboard col-lg-12 col-md-12 col-sm-12"
+      >
+        <!--div com cards dos dados Globais -->
+        <div class="chart-wrapper col-lg-12 col-md-12 col-sm-12">
+          <!--div mais internas dos cards dos dados Globais -->
+          <div class="containerkpi wrapkpi col-lg-12 col-md-12 col-sm-12">
             <section class="itemkpi">
               <h5>Total Confirmados</h5>
               <p id="confirmed"></p>
@@ -50,38 +98,51 @@
               <h5>Total Mortes</h5>
               <p id="death"></p>
             </section>
-            <section class="itemkpi">
+            <section class="itemkpi desaparecer">
               <h5>Total Recuperados</h5>
               <p id="recovered"></p>
             </section>
           </div>
-          <div class="chart-notes" id="date">Data de atualização:</div>
-          <a
-            class="link"
-            href="https://cv-reinan-santos.netlify.app"
-            target="_blank"
-          >
-            <h5>Frontend Desenvolvido por:</h5>
-            <h5>
-              Reinan santos<br />
-              Clique para acessar meu curriculo
-            </h5>
-          </a>
+          <!--div com a data de Ultima atualização] -->
+          <div class="chart-notes col-lg-12 col-md-12 col-sm-12" id="date">
+            Data de atualização:
+          </div>
+          <!--div com dados do Desenvolvedor] -->
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <a
+              class="link"
+              href="https://cv-reinan-santos.netlify.app"
+              target="_blank"
+            >
+              <h5>Frontend Desenvolvido por:</h5>
+              <h5>
+                Reinan santos<br />
+                Clique para acessar meu curriculo
+              </h5>
+            </a>
+          </div>
         </div>
-        <div class="chart-wrapper">
-          <div class="chart-stage">
+        <!--Div com grafico pizza sobre distribuição de novos casos-->
+        <div class="chart-wrapper col-lg-12 col-md-12 col-sm-12">
+          <!--Div mais interna do grafico pizza sobre distribuição de novos casos-->
+          <div class="chart-stage col-lg-12 col-md-12 col-sm-12">
             <canvas id="pizza" width="100" height="50"></canvas>
           </div>
         </div>
+
+        <!--Div com todo o rodapé-->
         <div class="two">
-          <div class="chart-wrapper">
-            <div class="chart-stage">
+          <!--Div com gráfico barra dos paises em sequncia de total de morte-->
+          <div class="chart-wrapper col-lg-12 col-md-12 col-sm-12">
+            <!--Div mais interna do gráfico barra dos paises em sequncia de total de morte-->
+            <div class="chart-stage col-lg-12 col-md-12 col-sm-12">
               <canvas id="barras" width="300" height="100"></canvas>
             </div>
           </div>
         </div>
       </div>
-      <script type="module" src="/assets/js/index.js"></script>
     </div>
+    <!--import do js local-->
+    <script type="module" src="/assets/js/index.js"></script>
   </body>
 </html>
